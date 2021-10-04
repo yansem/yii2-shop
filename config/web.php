@@ -9,6 +9,7 @@ $config = [
     'bootstrap' => ['log'],
     'defaultRoute' => 'home/index',
     'language' => 'ru',
+    'layout' => 'grocery',
     'name' => 'Grocery Store a Ecommerce Online Shopping',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
