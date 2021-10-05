@@ -63,6 +63,29 @@ paypal.minicart.cart.on('checkout', function (evt) {
     }
 });
 
+function getCart(){
+    $.ajax({
+        url: 'cart/show',
+        type: 'GET',
+        success: function (res){
+            showCart(res);
+        },
+        error: function (){
+            alert('Error!')
+        }
+    })
+}
+
+function showCart(res){
+    $('#modal-cart .modal-body').html(res);
+    $('#modal-cart').modal();
+    let cartSum = $('#cart-sum').text() ? $('#cart-sum').text() : '0';
+    if(cartSum){
+        $('.cart-sum').text(cartSum);
+    }
+
+}
+
 $('.add-to-cart').on('click', function (){
     let id = $(this).data('id');
     $.ajax({
@@ -70,7 +93,7 @@ $('.add-to-cart').on('click', function (){
         data: {id: id},
         type: 'GET',
         success: function (res){
-            console.log(res);
+            showCart(res);
         },
         error: function (){
             alert('Error!')
