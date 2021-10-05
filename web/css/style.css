@@ -1713,6 +1713,15 @@ h2.typoh2{
 	color: #fa1818;
 }
 
+img {
+	width: 100%;
+	height: auto;
+}
+
+.snipcart-thumb img {
+	max-width: 140px;
+}
+
 @media (max-width:768px){
 	.grid_5 {
 		padding: 0 0 1em;
