@@ -33,11 +33,7 @@ class CartController extends AppController
         $session = \Yii::$app->session;
         $session->open();
 
-        if(\Yii::$app->request->isAjax){
-            return $this->renderPartial('cart-modal', compact('session'));
-        }
-
-        return $this->redirect(\Yii::$app->request->referrer);
+        return $this->renderPartial('cart-modal', compact('session'));
     }
 
     public function actionDelItem($id)
@@ -48,11 +44,18 @@ class CartController extends AppController
         $cart = new Cart();
         $cart->delItem($id);
 
-        if(\Yii::$app->request->isAjax){
-            return $this->renderPartial('cart-modal', compact('session'));
-        }
+        return $this->renderPartial('cart-modal', compact('session'));
 
-        return $this->redirect(\Yii::$app->request->referrer);
+    }
 
+    public function actionClear()
+    {
+        $session = \Yii::$app->session;
+        $session->open();
+        $session->remove('cart');
+        $session->remove('cart.qty');
+        $session->remove('cart.sum');
+
+        return $this->renderPartial('cart-modal', compact('session'));
     }
 }
