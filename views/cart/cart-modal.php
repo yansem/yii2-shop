@@ -1,1 +1,1 @@
-CART
+<?php debug($_SESSION) ?>
