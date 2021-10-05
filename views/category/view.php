@@ -60,6 +60,11 @@
                 </div>
                 <?php endforeach; ?>
                 <div class="clearfix"> </div>
+                <div class="col-md-12">
+                    <?= \yii\widgets\LinkPager::widget([
+                        'pagination' => $pages,
+                    ]) ?>
+                </div>
             </div>
             <?php else: ?>
             <div class="w3ls_w3l_banner_nav_right_grid1">
