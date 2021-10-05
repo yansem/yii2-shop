@@ -1759,6 +1759,7 @@ img {
 #modal-cart span.del-item {
 	color: #FA1818;
 	top: 0;
+	cursor: pointer;
 }
 #modal-cart .close span {
 	color: #000;

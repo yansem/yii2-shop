@@ -39,4 +39,20 @@ class CartController extends AppController
 
         return $this->redirect(\Yii::$app->request->referrer);
     }
+
+    public function actionDelItem($id)
+    {
+        $session = \Yii::$app->session;
+        $session->open();
+
+        $cart = new Cart();
+        $cart->delItem($id);
+
+        if(\Yii::$app->request->isAjax){
+            return $this->renderPartial('cart-modal', compact('session'));
+        }
+
+        return $this->redirect(\Yii::$app->request->referrer);
+
+    }
 }
