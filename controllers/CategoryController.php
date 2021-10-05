@@ -16,6 +16,7 @@ class CategoryController extends AppController
         }
 
         $products = Product::find()->where(['category_id' => $id])->all();
+        $this->setMeta($category->title . ' :: ' . \Yii::$app->name, $category->description, $category->keywords);
 
         return $this->render('view', compact('category', 'products'));
     }
