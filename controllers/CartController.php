@@ -44,7 +44,11 @@ class CartController extends AppController
         $cart = new Cart();
         $cart->delItem($id);
 
-        return $this->renderPartial('cart-modal', compact('session'));
+        if(\Yii::$app->request->isAjax){
+            return $this->renderPartial('cart-modal', compact('session'));
+        }
+
+        return $this->redirect(\Yii::$app->request->referrer);
 
     }
 
@@ -61,7 +65,8 @@ class CartController extends AppController
 
     public function  actionCheckout()
     {
+        $session = \Yii::$app->session;
         $this->setMeta('Оформление заказа' . ' :: ' . \Yii::$app->name);
-        return $this->render('checkout');
+        return $this->render('checkout', compact('session'));
     }
 }
