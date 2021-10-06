@@ -7,6 +7,19 @@ use app\models\Product;
 
 class CartController extends AppController
 {
+    public function actionChange($id, $qty)
+    {
+        $product = Product::findOne($id);
+        if(!$product){
+            return false;
+        }
+        $session = \Yii::$app->session;
+        $session->open();
+        $cart = new Cart();
+        $cart->addToCart($product, $qty);
+        return true;
+    }
+
     public function actionAdd($id)
     {
         $product = Product::findOne($id);

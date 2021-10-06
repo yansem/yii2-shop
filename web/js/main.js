@@ -138,3 +138,23 @@ $('#modal-cart .modal-body').on('click', '.del-item', function (){
     })
     return false;
 })
+
+$('.value-plus, .value-minus').on('click', function (){
+    let id = $(this).data('id'),
+        qty = $(this).data('qty');
+    $('.cart-table .overlay').fadeIn();
+    $.ajax({
+        url: 'cart/change',
+        data: {id: id, qty: qty},
+        type: 'GET',
+        success: function (res){
+            if(!res) alert('Ошибка!');
+            location = 'cart/checkout';
+            // showCart(res);
+        },
+        error: function (){
+            alert('Error!')
+        }
+    })
+    return false;
+})
