@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use app\models\Cart;
+use app\models\Order;
+use app\models\OrderProduct;
 use app\models\Product;
 
 class CartController extends AppController
@@ -79,7 +81,27 @@ class CartController extends AppController
     public function  actionCheckout()
     {
         $session = \Yii::$app->session;
+
+        $order = new Order();
+        $order_product = new OrderProduct();
+
+        if($order->load(\Yii::$app->request->post())){
+            $order->qty = $session['cart.qty'];
+            $order->total = $session['cart.sum'];
+            $transaction = \Yii::$app->getDb()->beginTransaction();
+            if(!$order->save() || !$order_product->saveOrderProduct($order->id, $session->get('cart'))){
+                $session->setFlash('error', 'Ошибка оформления заказа');
+                $transaction->rollBack();
+            }else{
+                $session->setFlash('success', 'Ваш заказ принят');
+                $transaction->commit();
+                $session->remove('cart');
+                $session->remove('cart.qty');
+                $session->remove('cart.sum');
+                return $this->refresh();
+            }
+        }
         $this->setMeta('Оформление заказа' . ' :: ' . \Yii::$app->name);
-        return $this->render('checkout', compact('session'));
+        return $this->render('checkout', compact('session', 'order', 'order_product'));
     }
 }
