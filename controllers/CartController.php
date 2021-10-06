@@ -59,9 +59,9 @@ class CartController extends AppController
         return $this->renderPartial('cart-modal', compact('session'));
     }
 
-    public function  actionView()
+    public function  actionCheckout()
     {
         $this->setMeta('Оформление заказа' . ' :: ' . \Yii::$app->name);
-        return $this->render('view');
+        return $this->render('checkout');
     }
 }
