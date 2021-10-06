@@ -95,6 +95,17 @@ class CartController extends AppController
             }else{
                 $session->setFlash('success', 'Ваш заказ принят');
                 $transaction->commit();
+
+                try{
+                    \Yii::$app->mailer->compose('order', ['session' => $session])
+                        ->setFrom([\Yii::$app->params['senderEmail'] => \Yii::$app->params['senderName']])
+                        ->setTo($order->email)
+                        ->setSubject('Заказ на сайте')
+                        ->send();
+                }catch (\Swift_TransportException $e){
+                    //var_dump($e); die;
+                }
+
                 $session->remove('cart');
                 $session->remove('cart.qty');
                 $session->remove('cart.sum');

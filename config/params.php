@@ -2,6 +2,6 @@
 
 return [
     'adminEmail' => 'admin@example.com',
-    'senderEmail' => 'noreply@example.com',
-    'senderName' => 'Example.com mailer',
+    'senderEmail' => 'example@mail.ru',
+    'senderName' => 'Grocery Store a Ecommerce Online Shopping',
 ];
