@@ -108,7 +108,7 @@ $('.add-to-cart').on('click', function (){
         data: {id: id},
         type: 'GET',
         success: function (res){
-            if(!res) alert('Ошибка!')
+            if(!res) alert('Ошибка!');
             showCart(res);
         },
         error: function (){
@@ -125,7 +125,11 @@ $('#modal-cart .modal-body').on('click', '.del-item', function (){
         data: {id: id},
         type: 'GET',
         success: function (res){
-            if(!res) alert('Ошибка!')
+            if(!res) alert('Ошибка!');
+            let now_location = document.location.pathname;
+            if(now_location === '/cart/checkout'){
+                location = 'cart/checkout';
+            }
             showCart(res);
         },
         error: function (){
