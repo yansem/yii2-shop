@@ -7,6 +7,8 @@ use Yii;
 
 class AuthController extends AppAdminController
 {
+    public $layout = 'auth';
+
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
