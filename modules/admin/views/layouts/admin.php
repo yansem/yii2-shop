@@ -1,15 +1,28 @@
+<?php
+
+use app\assets\AppAsset;
+use yii\helpers\Html;
+
+AppAsset::register($this);
+?>
+
+<?php $this->beginPage() ?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html>
+<html lang="<?= Yii::$app->language ?>">
 <head>
-    <meta charset="utf-8">
+    <base href="/adminlte">
+    <meta charset="<?= Yii::$app->charset ?>">
+    <?php $this->registerCsrfMetaTags() ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Starter</title>
-    <!-- Tell the browser to be responsive to screen width -->
+    <title><?= Html::encode($this->title) ?></title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <?php $this->head() ?>
+
+
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
@@ -54,6 +67,7 @@ desired effect
 |---------------------------------------------------------|
 -->
 <body class="hold-transition skin-blue sidebar-mini">
+<?php $this->beginBody() ?>
 <div class="wrapper">
 
     <!-- Main Header -->
@@ -407,5 +421,7 @@ desired effect
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
+<?php $this->endBody() ?>
 </body>
 </html>
+<?php $this->endPage() ?>
