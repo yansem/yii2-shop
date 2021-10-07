@@ -32,6 +32,11 @@ class Order extends ActiveRecord
         return 'orders';
     }
 
+    public function getProducts()
+    {
+        return $this->hasMany(OrderProduct::class, ['order_id' => 'id']);
+    }
+
     public function behaviors()
     {
         return [
