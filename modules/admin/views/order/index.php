@@ -35,7 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             //'address',
                             //'note:ntext',
 
-                            ['class' => 'yii\grid\ActionColumn'],
+                            ['class' => 'yii\grid\ActionColumn',
+                                'header' => 'Действия'],
                         ],
                     ]); ?>
                 </div>
