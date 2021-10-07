@@ -303,6 +303,7 @@ desired effect
             <!--------------------------
               | Your Page Content Here |
               -------------------------->
+            <?= $content; ?>
 
         </section>
         <!-- /.content -->
