@@ -1,7 +1,9 @@
 <?php
 
 use app\assets\AdminAsset;
+use app\widgets\Alert;
 use yii\helpers\Html;
+use yii\widgets\Breadcrumbs;
 
 AdminAsset::register($this);
 ?>
@@ -63,7 +65,7 @@ desired effect
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="<?= \yii\helpers\Url::home() ?>" class="logo" target="_blank">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>A</b>LT</span>
             <!-- logo for regular state and mobile devices -->
@@ -274,13 +276,13 @@ desired effect
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Page Header
-                <small>Optional description</small>
+                <?= $this->title ?>
             </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                <li class="active">Here</li>
-            </ol>
+            <?= Breadcrumbs::widget([
+                    'homeLink' => ['label' => 'Главная', 'url' => '/admin/'],
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]) ?>
+            <?= Alert::widget() ?>
         </section>
 
         <!-- Main content -->
