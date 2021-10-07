@@ -51,16 +51,16 @@ class Order extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'qty' => 'Qty',
-            'total' => 'Total',
-            'status' => 'Status',
-            'name' => 'Name',
+            'created_at' => 'Добавлено',
+            'updated_at' => 'Обновлено',
+            'qty' => 'Кол-во',
+            'total' => 'Сумма',
+            'status' => 'Статус',
+            'name' => 'Имя',
             'email' => 'Email',
-            'phone' => 'Phone',
-            'address' => 'Address',
-            'note' => 'Note',
+            'phone' => 'Телефон',
+            'address' => 'Адрес',
+            'note' => 'Примечания',
         ];
     }
 }
