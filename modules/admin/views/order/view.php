@@ -25,10 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                 ]) ?>
             </div>
-
-            <div class="box-body">
                 <div class="order-view">
-
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
@@ -50,9 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'note:ntext',
                         ],
                     ]) ?>
-
                 </div>
-            </div>
         </div>
     </div>
 </div>
