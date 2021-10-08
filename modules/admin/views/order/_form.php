@@ -11,15 +11,17 @@ use yii\widgets\ActiveForm;
 <div class="order-form">
 
     <?php $form = ActiveForm::begin([
-            'fieldConfig' => [
-                    'template' => "<div class='col-md-6'>
-                                        {label} \n {input} \n
-                                        <div>{error}</div>
-                                   </div>"
-            ]
+        'fieldConfig' => [
+            'template' => "
+                <div class='col-md-6'>
+                    <p>{label}</p> \n {input} \n
+                    <div>{error}</div>
+                </div>
+            ",
+        ]
     ]); ?>
 
-    <?= $form->field($model, 'status')->dropDownList(['Новый', 'Завершен']) ?>
+    <?= $form->field($model, 'status')->dropDownList(['Новый', 'Готов']) ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
