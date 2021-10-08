@@ -7,39 +7,47 @@ use yii\grid\GridView;
 /* @var $searchModel app\modules\admin\models\ProductSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Products';
+$this->title = 'Товары';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="product-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <?= Html::a('Добавить товар', ['create'], ['class' => 'btn btn-success']) ?>
+            </div>
+            <div class="product-index">
+                <div class="box-body">
+                <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Create Product', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+                <?= GridView::widget([
+                    'dataProvider' => $dataProvider,
+                    'filterModel' => $searchModel,
+                    'columns' => [
+                        ['class' => 'yii\grid\SerialColumn'],
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+                        'id',
+                        'title',
+                        [
+                                'attribute' => 'category_id',
+                                'value' => function($data){
+                                    return $data->category->title;
+                                }
+                        ],
+                        //'content:ntext',
+                        'price',
+                        //'old_price',
+                        //'description',
+                        //'keywords',
+                        //'img',
+                        //'is_offer',
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'category_id',
-            'title',
-            'content:ntext',
-            'price',
-            //'old_price',
-            //'description',
-            //'keywords',
-            //'img',
-            //'is_offer',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-
-
+                        ['class' => 'yii\grid\ActionColumn'],
+                    ],
+                ]); ?>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
