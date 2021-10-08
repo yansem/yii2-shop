@@ -12,7 +12,6 @@ $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 
-
 <div class="row">
     <div class="col-md-12">
         <div class="box">
@@ -26,8 +25,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                 ]) ?>
             </div>
+
             <div class="box-body">
                 <div class="order-view">
+
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
@@ -36,12 +37,12 @@ $this->params['breadcrumbs'][] = $this->title;
                             'updated_at',
                             'qty',
                             'total',
+                            //'status',
                             [
-                                    'attribute' => 'status',
-                                    'value' => $model->status ? '<span class="text-green">Завершен</span>' : '<span class="text-red">Новый</span>',
-                                    'format' => 'raw',
+                                'attribute' => 'status',
+                                'value' => $model->status ? '<span class="text-green">Завершен</span>' : '<span class="text-red">Новый</span>',
+                                'format' => 'raw',
                             ],
-                            // 'status',
                             'name',
                             'email',
                             'phone',
@@ -49,20 +50,20 @@ $this->params['breadcrumbs'][] = $this->title;
                             'note:ntext',
                         ],
                     ]) ?>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<?php $items = $model->products; ?>
+<?php $items = $model->products ?>
 <div class="row">
     <div class="col-md-12">
         <div class="box">
             <div class="box-header with-border">
                 <h3 class="box-title">Товары в заказе</h3>
             </div>
-            <!-- /.box-header -->
             <div class="box-body">
                 <table class="table table-bordered">
                     <tbody>
@@ -73,7 +74,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <th>Цена</th>
                         <th>Сумма</th>
                     </tr>
-                    <?php foreach($items as $item): ?>
+                    <?php foreach($items as $item):?>
                         <tr>
                             <td><?= $item->id ?></td>
                             <td><?= $item->title ?></td>

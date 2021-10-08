@@ -7,7 +7,6 @@ use yii\widgets\Breadcrumbs;
 
 AdminAsset::register($this);
 ?>
-
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <!--
@@ -18,24 +17,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <base href="/adminlte/">
     <meta charset="<?= Yii::$app->charset ?>">
-    <?php $this->registerCsrfMetaTags() ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <?php $this->head() ?>
-
-
-
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-    <!-- Google Font -->
-
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -65,7 +55,7 @@ desired effect
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="<?= \yii\helpers\Url::home() ?>" class="logo" target="_blank">
+        <a href="<?= Yii::$app->homeUrl ?>" class="logo" target="_blank">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>A</b>LT</span>
             <!-- logo for regular state and mobile devices -->
@@ -97,8 +87,7 @@ desired effect
                                         <a href="#">
                                             <div class="pull-left">
                                                 <!-- User Image -->
-                                                <img src="dist/img/user2-160x160.jpg" class="img-circle"
-                                                     alt="User Image">
+                                                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                                             </div>
                                             <!-- Message title and timestamp -->
                                             <h4>
@@ -163,8 +152,7 @@ desired effect
                                             <!-- The progress bar -->
                                             <div class="progress xs">
                                                 <!-- Change the css width attribute to simulate progress -->
-                                                <div class="progress-bar progress-bar-aqua" style="width: 20%"
-                                                     role="progressbar"
+                                                <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
                                                      aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                                                     <span class="sr-only">20% Complete</span>
                                                 </div>
@@ -186,7 +174,7 @@ desired effect
                             <!-- The user image in the navbar-->
                             <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs"><?= Yii::$app->user->identity->username; ?></span>
+                            <span class="hidden-xs"><?= Yii::$app->user->identity->username ?></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
@@ -194,18 +182,16 @@ desired effect
                                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                 <p>
-                                    <?= Yii::$app->user->identity->username; ?>
+                                    <?= Yii::$app->user->identity->username ?>
                                 </p>
                             </li>
-                            <!-- Menu Body -->
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="<?= \yii\helpers\Url::to(['auth/logout']) ?>" class="btn btn-default
-                                    btn-flat">Sign out</a>
+                                    <a href="<?= \yii\helpers\Url::to(['auth/logout']) ?>" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>
@@ -219,7 +205,7 @@ desired effect
         </nav>
     </header>
     <!-- Left side column. contains the logo and sidebar -->
-   <?= $this->render('/layouts/inc/sidebar') ?>
+    <?= $this->render('/layouts/inc/sidebar') ?>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -229,8 +215,8 @@ desired effect
                 <?= $this->title ?>
             </h1>
             <?= Breadcrumbs::widget([
-                    'homeLink' => ['label' => 'Главная', 'url' => '/admin/'],
-                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                'homeLink' => ['label' => 'Главная', 'url' => '/admin/'],
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>
             <?= Alert::widget() ?>
         </section>
@@ -241,7 +227,7 @@ desired effect
             <!--------------------------
               | Your Page Content Here |
               -------------------------->
-            <?= $content; ?>
+            <?= $content ?>
 
         </section>
         <!-- /.content -->
@@ -337,14 +323,6 @@ desired effect
 </div>
 <!-- ./wrapper -->
 
-<!-- REQUIRED JS SCRIPTS -->
-
-<!-- jQuery 3 -->
-
-
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
 <?php $this->endBody() ?>
 </body>
 </html>
