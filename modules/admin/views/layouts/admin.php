@@ -218,7 +218,21 @@ desired effect
                 'homeLink' => ['label' => 'Главная', 'url' => '/admin/'],
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>
-            <?= Alert::widget() ?>
+<!--            --><?//= Alert::widget() ?>
+            <?php if(Yii::$app->session['error']): ?>
+                <div id="w1-error-0" class="alert-danger alert alert-dismissible" role="alert">
+                    <?= Yii::$app->session['error'] ?>
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span></button>
+                </div>
+            <?php endif; ?>
+            <?php \Yii::$app->session->remove('error'); ?>
+            <?php if(Yii::$app->session['success']): ?>
+                <div id="w1-error-0" class="alert-success alert alert-dismissible" role="alert">
+                    <?= Yii::$app->session['success'] ?>
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span></button>
+                </div>
+            <?php endif; ?>
+            <?php \Yii::$app->session->remove('success'); ?>
         </section>
 
         <!-- Main content -->
