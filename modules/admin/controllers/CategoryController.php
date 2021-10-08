@@ -3,6 +3,7 @@
 namespace app\modules\admin\controllers;
 
 use app\modules\admin\models\Category;
+use app\modules\admin\models\Product;
 use yii\data\ActiveDataProvider;
 use app\modules\admin\controllers\AppAdminController;
 use yii\web\NotFoundHttpException;
@@ -103,6 +104,7 @@ class CategoryController extends AppAdminController
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            \Yii::$app->session->set('success', 'Изменение сохранены');
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -120,7 +122,13 @@ class CategoryController extends AppAdminController
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $cats = Category::find()->where(['parent_id' => $id])->count();
+        $prods = Product::find()->where(['category_id' => $id])->count();
+        if($cats || $prods){
+            \Yii::$app->session->set('error', 'Удаление невозможно: в категории есть вложенные категории или товары');
+        }else{
+            $this->findModel($id)->delete();
+        }
 
         return $this->redirect(['index']);
     }

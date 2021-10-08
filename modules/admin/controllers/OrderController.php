@@ -104,7 +104,7 @@ class OrderController extends AppAdminController
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-//            \Yii::$app->session->setFlash('success', 'Изменение сохранены');
+            \Yii::$app->session->set('success', 'Изменение сохранены');
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
