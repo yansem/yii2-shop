@@ -74,7 +74,6 @@ class ProductController extends AppAdminController
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
-            \Yii::$app->session->set('error', 'Ошибка');
             $model->loadDefaultValues();
         }
 
