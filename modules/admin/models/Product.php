@@ -20,6 +20,7 @@ use Yii;
  */
 class Product extends \yii\db\ActiveRecord
 {
+//    public $file;
     /**
      * {@inheritdoc}
      */
@@ -44,6 +45,7 @@ class Product extends \yii\db\ActiveRecord
             [['content'], 'string'],
             [['price', 'old_price'], 'number'],
             [['title', 'description', 'keywords', 'img'], 'string', 'max' => 255],
+            //[['file'], 'image'],
         ];
     }
 
@@ -62,6 +64,7 @@ class Product extends \yii\db\ActiveRecord
             'description' => 'Описание',
             'keywords' => 'Ключевые слова',
             'img' => 'Изображение',
+//            'file' => 'Фото',
             'is_offer' => 'Горячее',
         ];
     }
