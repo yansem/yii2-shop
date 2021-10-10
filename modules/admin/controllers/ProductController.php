@@ -70,6 +70,7 @@ class ProductController extends AppAdminController
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
+                \Yii::$app->session->set('success', 'Товар добавлен');
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {

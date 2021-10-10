@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3><?= $products ?><sup style="font-size: 20px">%</sup></h3>
+                <h3><?= $products ?><sup style="font-size: 20px"></sup></h3>
 
                 <p>Продукты</p>
             </div>
